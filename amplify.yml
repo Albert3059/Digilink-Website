@@ -6,7 +6,6 @@ frontend:
         - npm ci
     build:
       commands:
-        - echo "Building Next.js static export for Amplify"
         - npm run build
   artifacts:
     baseDirectory: out
@@ -15,9 +14,3 @@ frontend:
   cache:
     paths:
       - node_modules/**/*
-      - .next/cache/**/*
-backend:
-  phases:
-    build:
-      commands:
-        - echo "Backend build completed"
