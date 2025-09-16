@@ -8,6 +8,8 @@ export const metadata: Metadata = {
   title: 'Digilink IT Solutions',
   description: 'Providing IT services, cloud solutions, and digital support for your business.',
   generator: 'Digilink IT Solutions',
+  icons: {
+    icon: '/favicon.ico', // path inside public folder
 }
 
 export default function RootLayout({

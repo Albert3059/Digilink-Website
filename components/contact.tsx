@@ -7,40 +7,26 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const { toast } = useToast()
+  const [successMessage, setSuccessMessage] = useState<string | null>(null)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSuccessMessage(null)
+    setErrorMessage(null)
 
     const formData = new FormData(e.currentTarget)
-
-    // ✅ Validation
-    const name = formData.get("name")?.toString().trim()
-    const email = formData.get("email")?.toString().trim()
-    const message = formData.get("message")?.toString().trim()
-
-    if (!name || !email || !message) {
-      toast({
-        title: "Validation error",
-        description: "Please fill in all fields before submitting.",
-        variant: "destructive",
-      })
-      setIsSubmitting(false)
-      return
-    }
-
     const data = {
       to: "info@digilinkict.co.za",
-      subject: `Message from ${name}`,
+      subject: `Message from ${formData.get("name")}`,
       html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong> ${message}</p>
+        <p><strong>Name:</strong> ${formData.get("name")}</p>
+        <p><strong>Email:</strong> ${formData.get("email")}</p>
+        <p><strong>Message:</strong> ${formData.get("message")}</p>
       `,
     }
 
@@ -55,21 +41,20 @@ export function Contact() {
       })
 
       if (response.ok) {
-        toast({
-          title: "✅ Message sent!",
-          description: "Thanks for reaching out, we'll get back to you soon.",
-        })
+        setSuccessMessage("Message sent successfully! We'll get back to you soon.")
         e.currentTarget.reset()
+
+        // Clear success message after 5 seconds
+        setTimeout(() => setSuccessMessage(null), 5000)
       } else {
         const errorData = await response.json().catch(() => null)
         throw new Error(errorData?.error || "Failed to send message")
       }
     } catch (error: any) {
-      toast({
-        title: "Error",
-        description: error.message || "Something went wrong. Please try again later.",
-        variant: "destructive",
-      })
+      setErrorMessage(error.message || "Failed to send message. Please try again.")
+
+      // Clear error after 5 seconds
+      setTimeout(() => setErrorMessage(null), 5000)
     } finally {
       setIsSubmitting(false)
     }
@@ -129,6 +114,10 @@ export function Contact() {
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
+                {/* Show success or error message */}
+                {successMessage && <p className="text-green-600 font-medium">{successMessage}</p>}
+                {errorMessage && <p className="text-red-600 font-medium">{errorMessage}</p>}
+
                 <Input name="name" placeholder="Your Name" required className="w-full" />
                 <Input name="email" type="email" placeholder="Your Email" required className="w-full" />
                 <Textarea name="message" placeholder="Your Message" required rows={5} className="w-full" />
