@@ -1,0 +1,10 @@
+{
+  "resourceName": "contactsubmissions",
+  "tableName": "contactsubmissions",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}

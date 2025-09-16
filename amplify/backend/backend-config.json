@@ -1,0 +1,28 @@
+{
+  "api": {
+    "contactapi": {
+      "service": "API Gateway",
+      "providerPlugin": "@aws-amplify/amplify-provider-awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "contactfunction",
+          "attributes": ["Name", "Arn"]
+        }
+      ]
+    }
+  },
+  "function": {
+    "contactfunction": {
+      "service": "Lambda",
+      "providerPlugin": "@aws-amplify/amplify-provider-awscloudformation",
+      "build": true
+    }
+  },
+  "storage": {
+    "contactsubmissions": {
+      "service": "DynamoDB",
+      "providerPlugin": "@aws-amplify/amplify-provider-awscloudformation"
+    }
+  }
+}
