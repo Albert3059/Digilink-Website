@@ -1,28 +1,36 @@
 {
-  "api": {
-    "contactapi": {
-      "service": "API Gateway",
-      "providerPlugin": "@aws-amplify/amplify-provider-awscloudformation",
-      "dependsOn": [
+  "function": {
+    "sendEmail": {
+      "build": true,
+      "dependsOn": [],
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_sendEmail_deploymentBucketName": {
+      "usedBy": [
         {
           "category": "function",
-          "resourceName": "contactfunction",
-          "attributes": ["Name", "Arn"]
+          "resourceName": "sendEmail"
         }
       ]
-    }
-  },
-  "function": {
-    "contactfunction": {
-      "service": "Lambda",
-      "providerPlugin": "@aws-amplify/amplify-provider-awscloudformation",
-      "build": true
-    }
-  },
-  "storage": {
-    "contactsubmissions": {
-      "service": "DynamoDB",
-      "providerPlugin": "@aws-amplify/amplify-provider-awscloudformation"
+    },
+    "AMPLIFY_function_sendEmail_resendApiKey": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendEmail"
+        }
+      ]
+    },
+    "AMPLIFY_function_sendEmail_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "sendEmail"
+        }
+      ]
     }
   }
 }

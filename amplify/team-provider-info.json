@@ -1,0 +1,24 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-digilinkwebsite-dev-328fa-authRole",
+      "UnauthRoleArn": "arn:aws:iam::598845874346:role/amplify-digilinkwebsite-dev-328fa-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::598845874346:role/amplify-digilinkwebsite-dev-328fa-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-digilinkwebsite-dev-328fa-deployment",
+      "UnauthRoleName": "amplify-digilinkwebsite-dev-328fa-unauthRole",
+      "StackName": "amplify-digilinkwebsite-dev-328fa",
+      "StackId": "arn:aws:cloudformation:us-east-1:598845874346:stack/amplify-digilinkwebsite-dev-328fa/6cdcf930-9316-11f0-9e97-0affe22b6bb3",
+      "AmplifyAppId": "d2etisv75cbfef"
+    },
+    "categories": {
+      "function": {
+        "sendEmail": {
+          "resendApiKey": "re_7mzJr4pD_6HajnzrtRKc8VaX87Cz3izbp",
+          "deploymentBucketName": "amplify-digilinkwebsite-dev-328fa-deployment",
+          "s3Key": "amplify-builds/sendEmail-666d3859307a36396b4c-build.zip"
+        }
+      }
+    }
+  }
+}
