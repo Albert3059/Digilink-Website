@@ -1,7 +1,6 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -26,17 +25,15 @@ export function Contact() {
     }
 
     try {
-const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    name: formData.name,
-    email: formData.email,
-    message: formData.message,
-  }),
-})
+      // Use environment variable for API endpoint
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL
+      if (!apiUrl) throw new Error("API URL is not configured")
 
-
+      const response = await fetch(apiUrl, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      })
 
       if (response.ok) {
         toast({
@@ -45,12 +42,13 @@ const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
         })
         e.currentTarget.reset()
       } else {
-        throw new Error("Failed to send message")
+        const errorData = await response.json().catch(() => null)
+        throw new Error(errorData?.error || "Failed to send message")
       }
-    } catch (error) {
+    } catch (error: any) {
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: error.message || "Failed to send message. Please try again.",
         variant: "destructive",
       })
     } finally {
@@ -112,24 +110,11 @@ const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <Input name="name" placeholder="Your Name" required className="w-full" />
-                </div>
-                <div>
-                  <Input name="email" type="email" placeholder="Your Email" required className="w-full" />
-                </div>
-                <div>
-                  <Textarea name="message" placeholder="Your Message" required rows={5} className="w-full" />
-                </div>
+                <Input name="name" placeholder="Your Name" required className="w-full" />
+                <Input name="email" type="email" placeholder="Your Email" required className="w-full" />
+                <Textarea name="message" placeholder="Your Message" required rows={5} className="w-full" />
                 <Button type="submit" className="w-full" disabled={isSubmitting}>
-                  {isSubmitting ? (
-                    "Sending..."
-                  ) : (
-                    <>
-                      Send Message
-                      <Send className="ml-2 h-4 w-4" />
-                    </>
-                  )}
+                  {isSubmitting ? "Sending..." : <>Send Message <Send className="ml-2 h-4 w-4" /></>}
                 </Button>
               </form>
             </CardContent>
