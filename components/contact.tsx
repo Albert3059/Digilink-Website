@@ -26,13 +26,18 @@ export function Contact() {
     }
 
     try {
-      const response = await fetch("/api/send-email", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      })
+     const response = await fetch("https://x91bomu20b.execute-api.us-east-1.amazonaws.com/dev", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    name: formData.name,
+    email: formData.email,
+    message: formData.message,
+  }),
+})
+
 
       if (response.ok) {
         toast({
