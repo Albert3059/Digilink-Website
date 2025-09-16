@@ -18,11 +18,16 @@ export function Contact() {
     setIsSubmitting(true)
 
     const formData = new FormData(e.currentTarget)
-    const data = {
-      name: formData.get("name") as string,
-      email: formData.get("email") as string,
-      message: formData.get("message") as string,
-    }
+const data = {
+  to: "info@digilinkict.co.za", // or wherever you want to receive emails
+  subject: `Message from ${formData.get("name")}`,
+  html: `
+    <p><strong>Name:</strong> ${formData.get("name")}</p>
+    <p><strong>Email:</strong> ${formData.get("email")}</p>
+    <p><strong>Message:</strong> ${formData.get("message")}</p>
+  `,
+}
+
 
     try {
       // Use environment variable for API endpoint and append /sendEmail
