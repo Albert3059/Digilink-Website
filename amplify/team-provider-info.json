@@ -21,6 +21,12 @@
       },
       "api": {
         "emailApi": {}
+      },
+      "hosting": {
+        "amplifyhosting": {
+          "appId": "d2etisv75cbfef",
+          "type": "manual"
+        }
       }
     }
   }
