@@ -18,19 +18,33 @@ export function Contact() {
     setIsSubmitting(true)
 
     const formData = new FormData(e.currentTarget)
-const data = {
-  to: "info@digilinkict.co.za", // or wherever you want to receive emails
-  subject: `Message from ${formData.get("name")}`,
-  html: `
-    <p><strong>Name:</strong> ${formData.get("name")}</p>
-    <p><strong>Email:</strong> ${formData.get("email")}</p>
-    <p><strong>Message:</strong> ${formData.get("message")}</p>
-  `,
-}
 
+    // ✅ Validation
+    const name = formData.get("name")?.toString().trim()
+    const email = formData.get("email")?.toString().trim()
+    const message = formData.get("message")?.toString().trim()
+
+    if (!name || !email || !message) {
+      toast({
+        title: "Validation error",
+        description: "Please fill in all fields before submitting.",
+        variant: "destructive",
+      })
+      setIsSubmitting(false)
+      return
+    }
+
+    const data = {
+      to: "info@digilinkict.co.za",
+      subject: `Message from ${name}`,
+      html: `
+        <p><strong>Name:</strong> ${name}</p>
+        <p><strong>Email:</strong> ${email}</p>
+        <p><strong>Message:</strong> ${message}</p>
+      `,
+    }
 
     try {
-      // Use environment variable for API endpoint and append /sendEmail
       const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/sendEmail`
       if (!process.env.NEXT_PUBLIC_API_URL) throw new Error("API URL is not configured")
 
@@ -42,8 +56,8 @@ const data = {
 
       if (response.ok) {
         toast({
-          title: "Message sent!",
-          description: "We'll get back to you as soon as possible.",
+          title: "✅ Message sent!",
+          description: "Thanks for reaching out, we'll get back to you soon.",
         })
         e.currentTarget.reset()
       } else {
@@ -53,7 +67,7 @@ const data = {
     } catch (error: any) {
       toast({
         title: "Error",
-        description: error.message || "Failed to send message. Please try again.",
+        description: error.message || "Something went wrong. Please try again later.",
         variant: "destructive",
       })
     } finally {
