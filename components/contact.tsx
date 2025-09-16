@@ -25,9 +25,9 @@ export function Contact() {
     }
 
     try {
-      // Use environment variable for API endpoint
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL
-      if (!apiUrl) throw new Error("API URL is not configured")
+      // Use environment variable for API endpoint and append /sendEmail
+      const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/sendEmail`
+      if (!process.env.NEXT_PUBLIC_API_URL) throw new Error("API URL is not configured")
 
       const response = await fetch(apiUrl, {
         method: "POST",
