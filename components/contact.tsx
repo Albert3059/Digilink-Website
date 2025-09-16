@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
@@ -18,38 +18,19 @@ export function Contact() {
     setIsSubmitting(true)
 
     const formData = new FormData(e.currentTarget)
-    const name = formData.get("name")?.toString().trim() || ""
-    const email = formData.get("email")?.toString().trim() || ""
-    const message = formData.get("message")?.toString().trim() || ""
+const data = {
+  to: "info@digilinkict.co.za", // or wherever you want to receive emails
+  subject: `Message from ${formData.get("name")}`,
+  html: `
+    <p><strong>Name:</strong> ${formData.get("name")}</p>
+    <p><strong>Email:</strong> ${formData.get("email")}</p>
+    <p><strong>Message:</strong> ${formData.get("message")}</p>
+  `,
+}
 
-    // ✅ Basic validation
-    if (!name) {
-      toast({ title: "Error", description: "Name is required", variant: "destructive" })
-      setIsSubmitting(false)
-      return
-    }
-    if (!/\S+@\S+\.\S+/.test(email)) {
-      toast({ title: "Error", description: "Enter a valid email", variant: "destructive" })
-      setIsSubmitting(false)
-      return
-    }
-    if (message.length < 10) {
-      toast({ title: "Error", description: "Message must be at least 10 characters", variant: "destructive" })
-      setIsSubmitting(false)
-      return
-    }
-
-    const data = {
-      to: "info@digilinkict.co.za",
-      subject: `Message from ${name}`,
-      html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong> ${message}</p>
-      `,
-    }
 
     try {
+      // Use environment variable for API endpoint and append /sendEmail
       const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/sendEmail`
       if (!process.env.NEXT_PUBLIC_API_URL) throw new Error("API URL is not configured")
 
@@ -61,7 +42,7 @@ export function Contact() {
 
       if (response.ok) {
         toast({
-          title: "✅ Message sent!",
+          title: "Message sent!",
           description: "We'll get back to you as soon as possible.",
         })
         e.currentTarget.reset()
@@ -72,7 +53,7 @@ export function Contact() {
     } catch (error: any) {
       toast({
         title: "Error",
-        description: error.message || "Something went wrong. Please try again.",
+        description: error.message || "Failed to send message. Please try again.",
         variant: "destructive",
       })
     } finally {
