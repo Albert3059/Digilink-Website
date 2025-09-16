@@ -26,17 +26,16 @@ export function Contact() {
     }
 
     try {
-     const response = await fetch("https://x91bomu20b.execute-api.us-east-1.amazonaws.com/dev", {
+const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}`, {
   method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
+  headers: { "Content-Type": "application/json" },
   body: JSON.stringify({
     name: formData.name,
     email: formData.email,
     message: formData.message,
   }),
 })
+
 
 
       if (response.ok) {
