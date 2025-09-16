@@ -2,12 +2,13 @@
   "name": "my-v0-project",
   "version": "0.1.0",
   "private": true,
-  "scripts": {
-    "build": "next build",
-    "dev": "next dev",
-    "lint": "next lint",
-    "start": "next start"
-  },
+"scripts": {
+  "dev": "next dev",
+  "build": "next build",
+  "start": "npx serve out",
+  "lint": "next lint"
+}
+,
   "dependencies": {
     "@aws-sdk/client-dynamodb": "latest",
     "@aws-sdk/lib-dynamodb": "latest",
