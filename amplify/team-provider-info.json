@@ -16,7 +16,7 @@
         "sendEmail": {
           "resendApiKey": "re_7mzJr4pD_6HajnzrtRKc8VaX87Cz3izbp",
           "deploymentBucketName": "amplify-digilinkwebsite-dev-328fa-deployment",
-          "s3Key": "amplify-builds/sendEmail-666d3859307a36396b4c-build.zip"
+          "s3Key": "amplify-builds/sendEmail-7a477943303774757534-build.zip"
         }
       },
       "api": {
