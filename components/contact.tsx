@@ -20,32 +20,32 @@ export function Contact() {
     setSuccessMessage("")
 
     const formData = new FormData(e.currentTarget)
-   const data = {
-  subject: `📩 Service Inquiry from ${formData.get("name")}`,
-  html: `
-    <div style="font-family: Arial, sans-serif; color: #333;">
-      <h2 style="color: #1e3a8a;">New Service Inquiry</h2>
-      <p>You have received a new service inquiry through your website contact form:</p>
-      <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
-        <tr>
-          <td style="font-weight: bold; padding: 6px; border: 1px solid #ddd;">Name:</td>
-          <td style="padding: 6px; border: 1px solid #ddd;">${formData.get("name")}</td>
-        </tr>
-        <tr>
-          <td style="font-weight: bold; padding: 6px; border: 1px solid #ddd;">Email:</td>
-          <td style="padding: 6px; border: 1px solid #ddd;">${formData.get("email")}</td>
-        </tr>
-        <tr>
-          <td style="font-weight: bold; padding: 6px; border: 1px solid #ddd;">Message:</td>
-          <td style="padding: 6px; border: 1px solid #ddd;">${formData.get("message")}</td>
-        </tr>
-      </table>
-      <p style="margin-top: 20px;">💡 Please respond to this inquiry as soon as possible.</p>
-      <p style="font-size: 12px; color: #888;">Sent from Digilink IT Solutions website contact form.</p>
-    </div>
-  `,
-}
-
+    const data = {
+      to: "info@digilinkict.co.za", // <--- Correct 'to' field
+      subject: `Service Inquiry from ${formData.get("name")}`,
+      html: `
+        <div style="font-family: Arial, sans-serif; color: #333;">
+          <h2 style="color: #1e3a8a;">New Service Inquiry</h2>
+          <p>You have received a new service inquiry through your website contact form:</p>
+          <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+            <tr>
+              <td style="font-weight: bold; padding: 6px; border: 1px solid #ddd;">Name:</td>
+              <td style="padding: 6px; border: 1px solid #ddd;">${formData.get("name")}</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold; padding: 6px; border: 1px solid #ddd;">Email:</td>
+              <td style="padding: 6px; border: 1px solid #ddd;">${formData.get("email")}</td>
+            </tr>
+            <tr>
+              <td style="font-weight: bold; padding: 6px; border: 1px solid #ddd;">Message:</td>
+              <td style="padding: 6px; border: 1px solid #ddd;">${formData.get("message")}</td>
+            </tr>
+          </table>
+          <p style="margin-top: 20px;">💡 Please respond to this inquiry as soon as possible.</p>
+          <p style="font-size: 12px; color: #888;">Sent from Digilink IT Solutions website contact form.</p>
+        </div>
+      `,
+    }
 
     try {
       const apiUrl = `${process.env.NEXT_PUBLIC_API_URL}/sendEmail`
@@ -58,14 +58,14 @@ export function Contact() {
       })
 
       if (response.ok) {
-        setSuccessMessage("Your message has been sent successfully! We'll get back to you within 24 hours.")
+        setSuccessMessage("✅ Your message has been sent successfully! We'll get back to you within 24 hours.")
         formRef.current?.reset()
       } else {
         const errorData = await response.json().catch(() => null)
         throw new Error(errorData?.error || "Failed to send message")
       }
     } catch (error: any) {
-      setSuccessMessage(`${error.message || "Failed to send message. Please try again."}`)
+      setSuccessMessage(`❌ ${error.message || "Failed to send message. Please try again."}`)
     } finally {
       setIsSubmitting(false)
     }
