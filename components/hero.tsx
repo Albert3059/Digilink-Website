@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Code, Smartphone, Globe } from "lucide-react"
+import Link from "next/link"
 
 export function Hero() {
   return (
@@ -13,15 +14,19 @@ export function Hero() {
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 text-pretty">
             Digilink IT Solutions provides a comprehensive suite of managed IT services designed to enhance productivity, fortify security, and streamline operations for modern businesses.
             We deliver tailored solutions that allow you to focus on your core business objectives. Our offerings span cloud integration, advanced security, seamless data migration, robust backup, and fully outsourced IT support.
-            </p>
+          </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Button size="lg" className="text-lg px-8 py-4">
-              Discover Our Services
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-4 bg-transparent">
-               Get Free Consultation
-            </Button>
+            <Link href="#services">
+              <Button size="lg" className="text-lg px-8 py-4">
+                Discover Our Services
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Button>
+            </Link>
+            <Link href="#contact">
+              <Button variant="outline" size="lg" className="text-lg px-8 py-4 bg-transparent">
+                Get Free Consultation
+              </Button>
+            </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
             <div className="flex flex-col items-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
