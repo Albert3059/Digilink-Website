@@ -11,8 +11,9 @@ export function Hero() {
             <span className="text-blue-600 dark:text-blue-400"> to the Digital World</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 text-pretty">
-            Digilink IT Solutions provides a comprehensive suite of managed IT services designed to enhance productivity, fortify security, and streamline operations for modern businesses. By leveraging industry leading technologies and a client-centric approach, we deliver tailored solutions that allow you to focus on your core business objectives. Our offerings span cloud integration, advanced security, seamless data migration, robust backup and fully outsourced IT support.
-          </p>
+            Digilink IT Solutions provides a comprehensive suite of managed IT services designed to enhance productivity, fortify security, and streamline operations for modern businesses.
+            We deliver tailored solutions that allow you to focus on your core business objectives. Our offerings span cloud integration, advanced security, seamless data migration, robust backup, and fully outsourced IT support.
+            </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Button size="lg" className="text-lg px-8 py-4">
               Discover Our Services
@@ -22,7 +23,19 @@ export function Hero() {
                Get Free Consultation
             </Button>
           </div>
-         
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
+            <div className="flex flex-col items-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+              <Code className="h-12 w-12 text-blue-600 dark:text-blue-400 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Smart Technology</h3>              
+            </div>
+            <div className="flex flex-col items-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+              <Smartphone className="h-12 w-12 text-blue-600 dark:text-blue-400 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Connected</h3>              
+            </div>
+            <div className="flex flex-col items-center p-6 bg-white dark:bg-gray-800 rounded-lg shadow-lg">
+              <Globe className="h-12 w-12 text-blue-600 dark:text-blue-400 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Digital Transformation</h3>                           
+            </div>
           </div>
         </div>
       </div>
