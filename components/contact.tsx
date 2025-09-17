@@ -7,40 +7,24 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
 
 export function Contact() {
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const { toast } = useToast()
+  const [successMessage, setSuccessMessage] = useState("")
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setIsSubmitting(true)
+    setSuccessMessage("")
 
     const formData = new FormData(e.currentTarget)
-
-    // ✅ Validation
-    const name = formData.get("name")?.toString().trim()
-    const email = formData.get("email")?.toString().trim()
-    const message = formData.get("message")?.toString().trim()
-
-    if (!name || !email || !message) {
-      toast({
-        title: "Validation error",
-        description: "Please fill in all fields before submitting.",
-        variant: "destructive",
-      })
-      setIsSubmitting(false)
-      return
-    }
-
     const data = {
       to: "info@digilinkict.co.za",
-      subject: `Message from ${name}`,
+      subject: `Message from ${formData.get("name")}`,
       html: `
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Message:</strong> ${message}</p>
+        <p><strong>Name:</strong> ${formData.get("name")}</p>
+        <p><strong>Email:</strong> ${formData.get("email")}</p>
+        <p><strong>Message:</strong> ${formData.get("message")}</p>
       `,
     }
 
@@ -54,20 +38,15 @@ export function Contact() {
         body: JSON.stringify(data),
       })
 
-  if (response.ok) {
-  setSuccessMessage("Message sent successfully! We'll get back to you soon.")
-  e.currentTarget.reset()
-} else {
-  const errorData = await response.json().catch(() => null)
-  throw new Error(errorData?.error || "Failed to send message")
-}
-
+      if (response.ok) {
+        setSuccessMessage("✅ Your message has been sent successfully! We'll get back to you shortly.")
+        e.currentTarget.reset()
+      } else {
+        const errorData = await response.json().catch(() => null)
+        throw new Error(errorData?.error || "Failed to send message")
+      }
     } catch (error: any) {
-      toast({
-        title: "Error",
-        description: error.message || "Something went wrong. Please try again later.",
-        variant: "destructive",
-      })
+      setSuccessMessage(`❌ ${error.message || "Failed to send message. Please try again."}`)
     } finally {
       setIsSubmitting(false)
     }
@@ -107,17 +86,6 @@ export function Contact() {
                 </div>
               </CardContent>
             </Card>
-
-            <div className="prose dark:prose-invert">
-              <h3 className="text-xl font-semibold mb-4">Why Choose Digilink IT?</h3>
-              <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                <li>• Expert team with 5+ years of experience</li>
-                <li>• Cutting-edge technology stack</li>
-                <li>• Agile development methodology</li>
-                <li>• 24/7 support and maintenance</li>
-                <li>• Competitive pricing and flexible packages</li>
-              </ul>
-            </div>
           </div>
 
           <Card>
@@ -134,6 +102,11 @@ export function Contact() {
                   {isSubmitting ? "Sending..." : <>Send Message <Send className="ml-2 h-4 w-4" /></>}
                 </Button>
               </form>
+              {successMessage && (
+                <p className={`mt-4 font-medium ${successMessage.startsWith("✅") ? "text-green-600" : "text-red-600"}`}>
+                  {successMessage}
+                </p>
+              )}
             </CardContent>
           </Card>
         </div>
