@@ -1,4 +1,5 @@
-import { Facebook, Twitter, Linkedin, Mail, Phone } from "lucide-react"
+import Link from "next/link";
+import { Facebook, Twitter, Linkedin, Mail, Phone } from "lucide-react";
 
 export function Footer() {
   return (
@@ -14,16 +15,11 @@ export function Footer() {
               <span className="font-bold">Digilink IT Solutions</span>
             </div>
             <p className="text-sm text-accent-foreground/80 leading-relaxed">
-              Connecting You to the Digital World through innovative IT consulting and AI-powered solutions.
+              Connecting You to the Digital World.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-accent-foreground/60 hover:text-accent-foreground transition-colors">
-                <Facebook className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-accent-foreground/60 hover:text-accent-foreground transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-accent-foreground/60 hover:text-accent-foreground transition-colors">
+              
+              <a href="https://www.linkedin.com/company/109102904/admin/dashboard/" className="text-accent-foreground/60 hover:text-accent-foreground transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>
             </div>
@@ -34,9 +30,12 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Quick Links</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <a href="#home" className="text-accent-foreground/80 hover:text-accent-foreground transition-colors">
+                <Link
+                  href="/"
+                  className="text-accent-foreground/80 hover:text-accent-foreground transition-colors"
+                >
                   Home
-                </a>
+                </Link>
               </li>
               <li>
                 <a
@@ -47,12 +46,18 @@ export function Footer() {
                 </a>
               </li>
               <li>
-                <a href="#about" className="text-accent-foreground/80 hover:text-accent-foreground transition-colors">
+                <a
+                  href="#about"
+                  className="text-accent-foreground/80 hover:text-accent-foreground transition-colors"
+                >
                   About Us
                 </a>
               </li>
               <li>
-                <a href="#contact" className="text-accent-foreground/80 hover:text-accent-foreground transition-colors">
+                <a
+                  href="#contact"
+                  className="text-accent-foreground/80 hover:text-accent-foreground transition-colors"
+                >
                   Contact
                 </a>
               </li>
@@ -94,12 +99,12 @@ export function Footer() {
               <div className="flex items-center space-x-2">
                 <Phone className="h-4 w-4 text-accent-foreground/60" />
                 <a
-                  href="https://wa.me/27011234567"
+                  href="https://wa.me/270603961862"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-accent-foreground/80 hover:text-accent-foreground transition-colors cursor-pointer"
                 >
-                  +27 (0) 11 123 4567
+                  +27 (0) 60 396 1862
                 </a>
               </div>
             </div>
@@ -108,18 +113,11 @@ export function Footer() {
 
         <div className="border-t border-accent-foreground/20 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm text-accent-foreground/60">© 2024 Digilink IT Solutions. All rights reserved.</p>
-            <div className="flex space-x-6 text-sm">
-              <a href="#" className="text-accent-foreground/60 hover:text-accent-foreground transition-colors">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-accent-foreground/60 hover:text-accent-foreground transition-colors">
-                Terms of Service
-              </a>
-            </div>
+            <p className="text-sm text-accent-foreground/60">© 2025 Digilink IT Solutions. All rights reserved.</p>
+          
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }

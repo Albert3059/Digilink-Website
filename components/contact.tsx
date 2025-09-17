@@ -76,10 +76,10 @@ export function Contact() {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4 text-balance">
-            Get In Touch
+            Ask Us. We are here to help
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto text-pretty">
-            Ready to start your next project? Let's discuss how we can help bring your ideas to life.
+            Ready to transform your business with cutting-edge IT solutions? Get in touch with our expert team today.
           </p>
         </div>
 
@@ -92,17 +92,29 @@ export function Contact() {
                 <CardDescription>Reach out to us through any of these channels</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="flex items-center space-x-3">
+                 <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                  <span>hello@digilinkict.co.za</span>
+                  <a
+                    href="mailto:info@digilinkict.co.za"
+                    className="text-accent-foreground/80 hover:text-accent-foreground transition-colors"
+                  >
+                    info@digilinkict.co.za
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                  <span>+1 (555) 123-4567</span>
+                  <a
+                    href="https://wa.me/27603961862"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-accent-foreground/80 hover:text-accent-foreground transition-colors"
+                  >
+                    060 396 1862
+                  </a>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                  <span>123 Tech Street, Digital City, DC 12345</span>
+                  <span>Pretoria, Montana</span>
                 </div>
               </CardContent>
             </Card>
