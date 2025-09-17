@@ -41,7 +41,7 @@ export function Contact() {
               <td style="padding: 6px; border: 1px solid #ddd;">${formData.get("message")}</td>
             </tr>
           </table>
-          <p style="margin-top: 20px;">💡 Please respond to this inquiry as soon as possible.</p>
+          <p style="margin-top: 20px;">Please respond to this inquiry as soon as possible.</p>
           <p style="font-size: 12px; color: #888;">Sent from Digilink IT Solutions website contact form.</p>
         </div>
       `,
