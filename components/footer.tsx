@@ -69,16 +69,22 @@ export function Footer() {
             <h3 className="font-semibold mb-4">Services</h3>
             <ul className="space-y-2 text-sm">
               <li>
-                <span className="text-accent-foreground/80">AI Integration</span>
+                <span className="text-accent-foreground/80">Modern Work (Microsoft 365)</span>
               </li>
               <li>
-                <span className="text-accent-foreground/80">Cloud Solutions</span>
+                <span className="text-accent-foreground/80">Voice on Teams</span>
               </li>
               <li>
-                <span className="text-accent-foreground/80">Cybersecurity</span>
+                <span className="text-accent-foreground/80">Mimecast Email Security</span>
               </li>
               <li>
-                <span className="text-accent-foreground/80">Digital Transformation</span>
+                <span className="text-accent-foreground/80">Migration: A Seamless Transition to the Cloud</span>
+              </li>
+               <li>
+                <span className="text-accent-foreground/80">Cloud Backup Solutions</span>
+              </li>
+               <li>
+                <span className="text-accent-foreground/80">Outsourced IT Support</span>
               </li>
             </ul>
           </div>

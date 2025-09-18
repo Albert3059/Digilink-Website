@@ -1,26 +1,26 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { Users, Award, Clock, Target } from "lucide-react"
+import { Users, Award, Clock, Target , Cloud} from "lucide-react"
 
 const stats = [
   {
     icon: Users,
-    number: "50+",
+    number: "2+",
     label: "Happy Clients",
   },
   {
-    icon: Award,
-    number: "100+",
-    label: "Projects Completed",
+      icon: Cloud,
+    number: "3+",
+    label: "Cloud Migrations Completed"
   },
   {
-    icon: Clock,
-    number: "5+",
-    label: "Years Experience",
+  icon: Clock,
+  number: "13+",
+  label: "Years Engineering Experience"
   },
   {
-    icon: Target,
-    number: "99%",
-    label: "Success Rate",
+     icon: Target,
+  number: "100%",
+  label: "Commitment to Client Success"
   },
 ]
 
@@ -31,16 +31,16 @@ export function About() {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div>
             <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6 text-balance">
-              About Digilink IT
+              About Digilink IT Solutions
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-6 text-pretty">
-              We are a forward-thinking digital agency specializing in creating innovative solutions that bridge the gap
-              between technology and business success. Our team of experienced developers and designers work
-              collaboratively to deliver exceptional results.
+              Digilink IT Solutions is a South African IT support and consulting company dedicated to helping individuals, 
+              home users, and small businesses navigate the digital world with clarity and confidence
             </p>
             <p className="text-lg text-gray-600 dark:text-gray-300 mb-8 text-pretty">
-              From startups to enterprise clients, we've helped businesses across various industries transform their
-              digital presence and achieve their goals through cutting-edge technology and strategic thinking.
+              Whether working remotely, managing a growing business, or seeking dependable technical assistance, 
+              Digilink IT Solutions provides the expertise and support you can trust. Our solutions are designed to simplify technology, 
+              allowing you to focus on what truly matters.
             </p>
             <div className="grid grid-cols-2 gap-6">
               {stats.map((stat, index) => (
@@ -57,7 +57,7 @@ export function About() {
           <div className="relative">
             <img
               src="/modern-office-team-working-on-computers.jpg"
-              alt="Digilink IT team working"
+              alt="Modern team working"
               className="rounded-lg shadow-2xl w-full h-auto"
             />
           </div>

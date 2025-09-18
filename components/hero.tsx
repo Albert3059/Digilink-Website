@@ -12,9 +12,9 @@ export function Hero() {
             <span className="text-blue-600 dark:text-blue-400"> to the Digital World</span>
           </h1>
           <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-8 text-pretty">
-            Digilink IT Solutions provides a comprehensive suite of managed IT services designed to enhance productivity, fortify security, and streamline operations for modern businesses.
-            We deliver tailored solutions that allow you to focus on your core business objectives. Our offerings span cloud integration, advanced security, seamless data migration, robust backup, and fully outsourced IT support.
-          </p>
+            Digilink IT Solutions provides managed IT services that boost efficiency, improve security, and streamline business operations. 
+            Our services include cloud integration, data migration, backup, robust security, and full IT support designed for your needs.
+            </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <Link href="#services">
               <Button size="lg" className="text-lg px-8 py-4">

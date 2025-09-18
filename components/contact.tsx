@@ -21,7 +21,7 @@ export function Contact() {
 
     const formData = new FormData(e.currentTarget)
     const data = {
-      to: "info@digilinkict.co.za", // <--- Correct 'to' field
+      to: "info@digilinkict.co.za",
       subject: `Service Inquiry from ${formData.get("name")}`,
       html: `
         <div style="font-family: Arial, sans-serif; color: #333;">
@@ -60,12 +60,16 @@ export function Contact() {
       if (response.ok) {
         setSuccessMessage("✅ Your message has been sent successfully! We'll get back to you within 24 hours.")
         formRef.current?.reset()
+        // Clear message after 5 seconds
+        setTimeout(() => setSuccessMessage(""), 5000)
       } else {
         const errorData = await response.json().catch(() => null)
         throw new Error(errorData?.error || "Failed to send message")
       }
     } catch (error: any) {
       setSuccessMessage(`❌ ${error.message || "Failed to send message. Please try again."}`)
+      // Clear message after 5 seconds
+      setTimeout(() => setSuccessMessage(""), 5000)
     } finally {
       setIsSubmitting(false)
     }
@@ -92,7 +96,7 @@ export function Contact() {
                 <CardDescription>Reach out to us through any of these channels</CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
-                 <div className="flex items-center space-x-3">
+                <div className="flex items-center space-x-3">
                   <Mail className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                   <a
                     href="mailto:info@digilinkict.co.za"
@@ -122,11 +126,11 @@ export function Contact() {
             <div className="prose dark:prose-invert">
               <h3 className="text-xl font-semibold mb-4">Why Choose Digilink IT?</h3>
               <ul className="space-y-2 text-gray-600 dark:text-gray-300">
-                <li>• Expert team with 5+ years of experience</li>
-                <li>• Cutting-edge technology stack</li>
-                <li>• Agile development methodology</li>
+                <li>• Expert team with 13+ years of experience</li>
+                <li>• Modern, secure technology stack</li>
+                <li>• Client-focused, proven methodology</li>
                 <li>• 24/7 support and maintenance</li>
-                <li>• Competitive pricing and flexible packages</li>
+                <li>• Flexible, competitive pricing</li>
               </ul>
             </div>
           </div>
