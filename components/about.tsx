@@ -4,7 +4,7 @@ import { Users, Award, Clock, Target , Cloud} from "lucide-react"
 const stats = [
   {
     icon: Users,
-    number: "2+",
+    number: "3+",
     label: "Happy Clients",
   },
   {
